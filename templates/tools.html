@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block title %}AI Tools - NeuroWeb{% endblock %}
+
+{% block content %}
+<div class="neural-bg" id="neuralNetwork"></div>
+
+<div class="tools-hero">
+    <div class="section-header">
+        <h1>AI Tools Library</h1>
+        <p>Access powerful AI models directly in your browser</p>
+        <div class="performance-indicator">
+            <i class="fas fa-microchip"></i>
+            <span id="deviceInfo">Checking device capabilities...</span>
+        </div>
+    </div>
+
+    <div class="tools-container">
+        <div class="tools-filters">
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">All Tools</button>
+                <button class="filter-btn" data-filter="text">Text</button>
+                <button class="filter-btn" data-filter="image">Image</button>
+                <button class="filter-btn" data-filter="audio">Audio</button>
+                <button class="filter-btn" data-filter="code">Code</button>
+                <button class="filter-btn" data-filter="data">Data</button>
+                <button class="filter-btn" data-filter="video">Video</button>
+            </div>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search tools..." id="toolSearch">
+            </div>
+        </div>
+
+        <div class="tools-grid">
+            <!-- Text Generation -->
+            <div class="tool-card" data-category="text">
+                <div class="tool-header">
+                    <i class="fas fa-text-height"></i>
+                    <h3>GPT-2 Text Generation</h3>
+                    <span class="performance-badge" data-level="medium">
+                        <i class="fas fa-gauge-high"></i> Medium Load
+                    </span>
+                </div>
+                <p>Generate creative text using OpenAI's GPT-2 model</p>
+                <div class="tool-specs">
+                    <span><i class="fas fa-memory"></i> 2GB RAM</span>
+                    <span><i class="fas fa-clock"></i> ~3s</span>
+                </div>
+                <button class="run-locally-btn" data-model="gpt2">
+                    <i class="fas fa-play"></i> Run Locally
+                </button>
+            </div>
+
+            <!-- Image Generation -->
+            <div class="tool-card" data-category="image">
+                <div class="tool-header">
+                    <i class="fas fa-image"></i>
+                    <h3>Stable Diffusion Lite</h3>
+                    <span class="performance-badge" data-level="high">
+                        <i class="fas fa-gauge-high"></i> High Load
+                    </span>
+                </div>
+                <p>Generate images from text descriptions using optimized Stable Diffusion</p>
+                <div class="tool-specs">
+                    <span><i class="fas fa-memory"></i> 4GB RAM</span>
+                    <span><i class="fas fa-clock"></i> ~10s</span>
+                </div>
+                <button class="run-locally-btn" data-model="stable-diffusion-lite">
+                    <i class="fas fa-play"></i> Run Locally
+                </button>
+            </div>
+
+            <!-- Code Assistant -->
+            <div class="tool-card" data-category="code">
+                <div class="tool-header">
+                    <i class="fas fa-code"></i>
+                    <h3>CodeBERT Assistant</h3>
+                    <span class="performance-badge" data-level="low">
+                        <i class="fas fa-gauge"></i> Low Load
+                    </span>
+                </div>
+                <p>Get code suggestions and completions using CodeBERT</p>
+                <div class="tool-specs">
+                    <span><i class="fas fa-memory"></i> 1GB RAM</span>
+                    <span><i class="fas fa-clock"></i> ~1s</span>
+                </div>
+                <button class="run-locally-btn" data-model="codebert">
+                    <i class="fas fa-play"></i> Run Locally
+                </button>
+            </div>
+
+            <!-- Audio Processing -->
+            <div class="tool-card" data-category="audio">
+                <div class="tool-header">
+                    <i class="fas fa-music"></i>
+                    <h3>Wav2Vec Speech Recognition</h3>
+                    <span class="performance-badge" data-level="medium">
+                        <i class="fas fa-gauge-high"></i> Medium Load
+                    </span>
+                </div>
+                <p>Convert speech to text with high accuracy</p>
+                <div class="tool-specs">
+                    <span><i class="fas fa-memory"></i> 2GB RAM</span>
+                    <span><i class="fas fa-clock"></i> Real-time</span>
+                </div>
+                <button class="run-locally-btn" data-model="wav2vec">
+                    <i class="fas fa-play"></i> Run Locally
+                </button>
+            </div>
+
+            <!-- Data Analysis -->
+            <div class="tool-card" data-category="data">
+                <div class="tool-header">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Data Analytics Suite</h3>
+                    <span class="performance-badge" data-level="medium">
+                        <i class="fas fa-gauge-high"></i> Medium Load
+                    </span>
+                </div>
+                <p>Analyze and visualize data with AI-powered insights</p>
+                <div class="tool-specs">
+                    <span><i class="fas fa-memory"></i> 2GB RAM</span>
+                    <span><i class="fas fa-clock"></i> ~5s</span>
+                </div>
+                <button class="run-locally-btn" data-model="data-analytics">
+                    <i class="fas fa-play"></i> Run Locally
+                </button>
+            </div>
+
+            <!-- Video Processing -->
+            <div class="tool-card" data-category="video">
+                <div class="tool-header">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Enhancement AI</h3>
+                    <span class="performance-badge" data-level="high">
+                        <i class="fas fa-gauge-high"></i> High Load
+                    </span>
+                </div>
+                <p>Enhance video quality and resolution using AI</p>
+                <div class="tool-specs">
+                    <span><i class="fas fa-memory"></i> 4GB RAM</span>
+                    <span><i class="fas fa-clock"></i> ~15s</span>
+                </div>
+                <button class="run-locally-btn" data-model="video-enhance">
+                    <i class="fas fa-play"></i> Run Locally
+                </button>
+            </div>
+
+            <!-- Text Translation -->
+            <div class="tool-card" data-category="text">
+                <div class="tool-header">
+                    <i class="fas fa-language"></i>
+                    <h3>Neural Translation</h3>
+                    <span class="performance-badge" data-level="low">
+                        <i class="fas fa-gauge"></i> Low Load
+                    </span>
+                </div>
+                <p>Translate text between 100+ languages</p>
+                <div class="tool-specs">
+                    <span><i class="fas fa-memory"></i> 1GB RAM</span>
+                    <span><i class="fas fa-clock"></i> ~2s</span>
+                </div>
+                <button class="run-locally-btn" data-model="neural-translate">
+                    <i class="fas fa-play"></i> Run Locally
+                </button>
+            </div>
+
+            <!-- Image Recognition -->
+            <div class="tool-card" data-category="image">
+                <div class="tool-header">
+                    <i class="fas fa-camera"></i>
+                    <h3>Object Detection</h3>
+                    <span class="performance-badge" data-level="medium">
+                        <i class="fas fa-gauge-high"></i> Medium Load
+                    </span>
+                </div>
+                <p>Detect and classify objects in images</p>
+                <div class="tool-specs">
+                    <span><i class="fas fa-memory"></i> 2GB RAM</span>
+                    <span><i class="fas fa-clock"></i> ~4s</span>
+                </div>
+                <button class="run-locally-btn" data-model="object-detect">
+                    <i class="fas fa-play"></i> Run Locally
+                </button>
+            </div>
+
+            <!-- Text Summarization -->
+            <div class="tool-card" data-category="text">
+                <div class="tool-header">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Text Summarizer</h3>
+                    <span class="performance-badge" data-level="low">
+                        <i class="fas fa-gauge"></i> Low Load
+                    </span>
+                </div>
+                <p>Create concise summaries of long texts</p>
+                <div class="tool-specs">
+                    <span><i class="fas fa-memory"></i> 1GB RAM</span>
+                    <span><i class="fas fa-clock"></i> ~2s</span>
+                </div>
+                <button class="run-locally-btn" data-model="summarizer">
+                    <i class="fas fa-play"></i> Run Locally
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/tools.js') }}"></script>
+{% endblock %}

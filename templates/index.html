@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block title %}NeuroWeb - AI Platform{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+{% endblock %}
+
+{% block content %}
+<div class="neural-bg" id="neuralNetwork"></div>
+
+<section class="hero-section">
+    <div class="hero-content">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i class="fas fa-robot"></i>
+                    Next-Gen AI Platform
+                </div>
+                <h1 class="hero-title">
+                    Unlock the Power of AI
+                    <span>Transform Your Future</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Experience cutting-edge artificial intelligence tools designed for the next generation of innovation. Build, create, and innovate with advanced AI technology.
+                </p>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('register') }}" class="cta-button cta-primary">
+                        <i class="fas fa-rocket"></i>
+                        <span>Start Creating</span>
+                    </a>
+                    <a href="{{ url_for('pricing') }}" class="cta-button cta-secondary">
+                        <i class="fas fa-tag"></i>
+                        <span>See Plans</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="neural-dots" id="heroNeural"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="features-section">
+    <div class="section-header">
+        <h2 class="gradient-text">Core Features</h2>
+        <p>Powerful AI tools for every need</p>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3>Neural Networks</h3>
+            <p>Access pre-trained models or train your own using our cloud infrastructure</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-image"></i>
+            </div>
+            <h3>Image Processing</h3>
+            <p>Generate, edit, and enhance images with state-of-the-art AI models</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <h3>Code Generation</h3>
+            <p>Get intelligent code suggestions and automate routine tasks</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <h3>Edge Computing</h3>
+            <p>Run AI models directly in your browser with optimized performance</p>
+        </div>
+    </div>
+
+    <div class="stats-section">
+        <div class="stat-item">
+            <span class="stat-number">100K+</span>
+            <span class="stat-label">Active Users</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">50M+</span>
+            <span class="stat-label">AI Operations</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">99.9%</span>
+            <span class="stat-label">Uptime</span>
+        </div>
+    </div>
+</section>
+
+<section class="tools-section">
+    <div class="section-header">
+        <h2 class="gradient-text">Popular Tools</h2>
+        <p>Start with our most used AI solutions</p>
+    </div>
+
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="tool-icon">
+                <i class="fas fa-magic"></i>
+            </div>
+            <h3>AI Text Generator</h3>
+            <p>Create content using advanced language models</p>
+            <button class="tool-btn">Try Now</button>
+        </div>
+
+        <div class="tool-card">
+            <div class="tool-icon">
+                <i class="fas fa-image"></i>
+            </div>
+            <h3>Image Generator</h3>
+            <p>Transform text into stunning visuals</p>
+            <button class="tool-btn">Try Now</button>
+        </div>
+
+        <div class="tool-card">
+            <div class="tool-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <h3>Code Assistant</h3>
+            <p>Get intelligent code suggestions</p>
+            <button class="tool-btn">Try Now</button>
+        </div>
+
+        <div class="tool-card">
+            <div class="tool-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3>AI Analytics</h3>
+            <p>Deep insights from your data</p>
+            <button class="tool-btn">Try Now</button>
+        </div>
+    </div>
+</section>
+
+<section class="use-cases">
+    <div class="section-header">
+        <h2>Solutions For Every Need</h2>
+        <p>Discover how our AI tools can help different industries</p>
+    </div>
+
+    <div class="use-case-grid">
+        <div class="use-case-item">
+            <h3>Business</h3>
+            <ul>
+                <li>Document Analysis</li>
+                <li>Market Research</li>
+                <li>Customer Support</li>
+                <li>Data Processing</li>
+            </ul>
+        </div>
+
+        <div class="use-case-item">
+            <h3>Developers</h3>
+            <ul>
+                <li>Code Generation</li>
+                <li>Bug Finding</li>
+                <li>API Integration</li>
+                <li>Documentation</li>
+            </ul>
+        </div>
+
+        <div class="use-case-item">
+            <h3>Creative</h3>
+            <ul>
+                <li>Image Generation</li>
+                <li>Content Creation</li>
+                <li>Design Assistant</li>
+                <li>Video Editing</li>
+            </ul>
+        </div>
+
+        <div class="use-case-item">
+            <h3>Research</h3>
+            <ul>
+                <li>Data Analysis</li>
+                <li>Pattern Recognition</li>
+                <li>Hypothesis Testing</li>
+                <li>Visualization</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-neural">
+    <div class="footer-nodes" id="footerNeural"></div>
+</footer>
+
+{% endblock %}
+
+{% block scripts %}
+<script defer src="{{ url_for('static', filename='js/neural-animation.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    initNeuralAnimation();
+    initHeroAnimation();
+});
+</script>
+{% endblock %}

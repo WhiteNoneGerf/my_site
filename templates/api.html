@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}API Reference - NeuroWeb{% endblock %}
+
+{% block content %}
+<div class="docs-hero">
+    <div class="docs-container">
+        <div class="section-header">
+            <h1>API Reference</h1>
+            <p>Complete documentation for the NeuroWeb API</p>
+        </div>
+
+        <div class="api-content">
+            <!-- REST API Section -->
+            <section id="rest-api">
+                <h2><i class="fas fa-cloud"></i> REST API</h2>
+                
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="method get">GET</span>
+                        <code>/api/v1/models</code>
+                    </div>
+                    <p>List all available AI models</p>
+                    <div class="code-block">
+                        <pre><code>curl -X GET "https://api.neuroweb.ai/v1/models" \
+-H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+                    </div>
+                </div>
+
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="method post">POST</span>
+                        <code>/api/v1/generate</code>
+                    </div>
+                    <p>Generate text using specified model</p>
+                    <div class="code-block">
+                        <pre><code>curl -X POST "https://api.neuroweb.ai/v1/generate" \
+-H "Authorization: Bearer YOUR_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+    "model": "gpt2",
+    "prompt": "Once upon a time",
+    "max_length": 100
+}'</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WebSocket API Section -->
+            <section id="websocket">
+                <h2><i class="fas fa-bolt"></i> WebSocket API</h2>
+                <p>Real-time communication for streaming responses</p>
+                <div class="code-block">
+                    <pre><code>const socket = new WebSocket('wss://api.neuroweb.ai/v1/ws');
+socket.onmessage = (event) => {
+    const response = JSON.parse(event.data);
+    console.log(response);
+};</code></pre>
+                </div>
+            </section>
+
+            <!-- Authentication Section -->
+            <section id="authentication">
+                <h2><i class="fas fa-lock"></i> Authentication</h2>
+                <p>Secure your API requests using API keys</p>
+                <div class="info-box">
+                    <h4>API Key Generation</h4>
+                    <ol>
+                        <li>Log in to your NeuroWeb account</li>
+                        <li>Navigate to API Settings</li>
+                        <li>Click "Generate New Key"</li>
+                    </ol>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

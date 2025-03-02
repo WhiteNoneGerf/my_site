@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block title %}Documentation - NeuroWeb{% endblock %}
+
+{% block content %}
+<div class="docs-hero">
+    <div class="docs-container">
+        <div class="docs-sidebar">
+            <div class="docs-nav">
+                <h3>Getting Started</h3>
+                <ul>
+                    <li><a href="{{ url_for('docs') }}#introduction" class="active">Introduction</a></li>
+                    <li><a href="{{ url_for('docs') }}#quick-start">Quick Start Guide</a></li>
+                    <li><a href="{{ url_for('docs') }}#installation">Installation</a></li>
+                </ul>
+
+                <h3>Core Concepts</h3>
+                <ul>
+                    <li><a href="{{ url_for('docs') }}#architecture">Architecture</a></li>
+                    <li><a href="{{ url_for('docs') }}#models">AI Models</a></li>
+                    <li><a href="{{ url_for('docs') }}#optimization">Performance</a></li>
+                </ul>
+
+                <h3>API Reference</h3>
+                <ul>
+                    <li><a href="{{ url_for('api') }}#rest-api">REST API</a></li>
+                    <li><a href="{{ url_for('api') }}#websocket">WebSocket API</a></li>
+                    <li><a href="{{ url_for('api') }}#authentication">Authentication</a></li>
+                </ul>
+
+                <h3>Tutorials</h3>
+                <ul>
+                    <li><a href="{{ url_for('guides') }}#text-generation">Text Generation</a></li>
+                    <li><a href="{{ url_for('guides') }}#image-processing">Image Processing</a></li>
+                    <li><a href="{{ url_for('guides') }}#code-completion">Code Completion</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="docs-content">
+            <section id="introduction">
+                <h1>Introduction to NeuroWeb</h1>
+                <p>NeuroWeb is a powerful platform for running AI models directly in your browser. Our platform provides a seamless experience for both developers and end-users.</p>
+                
+                <div class="info-box">
+                    <h4><i class="fas fa-lightbulb"></i> Key Features</h4>
+                    <ul>
+                        <li>Browser-based AI model execution</li>
+                        <li>No server-side processing required</li>
+                        <li>Support for multiple AI domains</li>
+                        <li>Optimized for performance</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="quick-start">
+                <h2>Quick Start Guide</h2>
+                <div class="code-block">
+                    <pre><code>// Initialize NeuroWeb
+const neuro = new NeuroWeb();
+
+// Load a model
+await neuro.loadModel('gpt2-mini');
+
+// Generate text
+const result = await neuro.generate({
+    prompt: "Once upon a time",
+    maxLength: 100
+});</code></pre>
+                </div>
+            </section>
+
+            <section id="installation">
+                <h2>Installation</h2>
+                <p>Choose your preferred installation method:</p>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <button class="active">NPM</button>
+                        <button>CDN</button>
+                        <button>Download</button>
+                    </div>
+                    <div class="tab-content active">
+                        <pre><code>npm install neuroweb</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="architecture">
+                <h2><i class="fas fa-cubes"></i> Architecture</h2>
+                <p>NeuroWeb is built on a modern, scalable architecture designed for high performance and reliability.</p>
+                
+                <div class="info-box">
+                    <h4>Key Components</h4>
+                    <ul>
+                        <li>Browser-based Model Runner</li>
+                        <li>WebAssembly Core Engine</li>
+                        <li>GPU Acceleration Layer</li>
+                        <li>Memory Management System</li>
+                    </ul>
+                </div>
+
+                <div class="architecture-diagram">
+                    <img src="{{ url_for('static', filename='img/docs/architecture.svg') }}" alt="NeuroWeb Architecture">
+                </div>
+            </section>
+
+            <section id="models">
+                <h2><i class="fas fa-network-wired"></i> AI Models</h2>
+                <p>Our platform supports various AI models optimized for browser execution.</p>
+
+                <div class="models-grid">
+                    <div class="model-card">
+                        <h4>Text Generation</h4>
+                        <ul>
+                            <li>GPT-2 Mini</li>
+                            <li>BERT Base</li>
+                            <li>T5 Small</li>
+                        </ul>
+                    </div>
+
+                    <div class="model-card">
+                        <h4>Image Processing</h4>
+                        <ul>
+                            <li>MobileNet V2</li>
+                            <li>Tiny YOLO</li>
+                            <li>StyleGAN Lite</li>
+                        </ul>
+                    </div>
+
+                    <div class="model-card">
+                        <h4>Audio Processing</h4>
+                        <ul>
+                            <li>Wav2Vec Mini</li>
+                            <li>MelNet Lite</li>
+                            <li>Whisper Small</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="optimization">
+                <h2><i class="fas fa-tachometer-alt"></i> Performance</h2>
+                <p>Learn about performance optimization and best practices for running AI models in the browser.</p>
+
+                <div class="performance-metrics">
+                    <div class="metric-card">
+                        <h4>Memory Usage</h4>
+                        <p>Typical memory footprint for different model types:</p>
+                        <ul>
+                            <li>Text Models: 100MB - 500MB</li>
+                            <li>Image Models: 50MB - 200MB</li>
+                            <li>Audio Models: 80MB - 300MB</li>
+                        </ul>
+                    </div>
+
+                    <div class="metric-card">
+                        <h4>Processing Speed</h4>
+                        <p>Average processing times on modern browsers:</p>
+                        <ul>
+                            <li>Text Generation: 2-5 seconds</li>
+                            <li>Image Processing: 1-3 seconds</li>
+                            <li>Audio Processing: Real-time</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="optimization-tips">
+                    <h4>Optimization Tips</h4>
+                    <ul>
+                        <li>Enable WebGL acceleration when available</li>
+                        <li>Use quantized models for faster loading</li>
+                        <li>Implement progressive loading for large models</li>
+                        <li>Utilize Web Workers for background processing</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scroll for anchor links
+    document.querySelectorAll('.docs-nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const section = document.querySelector(this.getAttribute('href'));
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Update active state
+                document.querySelectorAll('.docs-nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

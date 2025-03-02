@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}Pricing - NeuroWeb{% endblock %}
+
+{% block content %}
+<div class="neural-bg" id="neuralNetwork"></div>
+
+<div class="pricing-hero">
+    <div class="section-header">
+        <h1>Choose Your Plan</h1>
+        <p>Simple, transparent pricing for everyone</p>
+    </div>
+
+    <div class="pricing-toggle">
+        <span class="toggle-label active" id="monthlyLabel">Monthly</span>
+        <label class="switch">
+            <input type="checkbox" id="billingToggle">
+            <span class="slider"></span>
+        </label>
+        <span class="toggle-label" id="yearlyLabel">Yearly <span class="save-badge">Save 20%</span></span>
+    </div>
+
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <div class="card-header">
+                <h3>Starter</h3>
+                <div class="price">
+                    <span class="currency">$</span>
+                    <span class="amount">0</span>
+                    <span class="period" data-monthly="/month" data-yearly="/year">/month</span>
+                </div>
+            </div>
+            <div class="card-features">
+                <ul>
+                    <li><i class="fas fa-check"></i>5 free credits monthly</li>
+                    <li><i class="fas fa-check"></i>Basic AI tools</li>
+                    <li><i class="fas fa-check"></i>Standard support</li>
+                    <li><i class="fas fa-check"></i>Community access</li>
+                </ul>
+            </div>
+            <a href="{{ url_for('register') }}" class="pricing-cta">Get Started</a>
+        </div>
+
+        <div class="pricing-card featured">
+            <div class="card-badge">Most Popular</div>
+            <div class="card-header">
+                <h3>Pro</h3>
+                <div class="price">
+                    <span class="currency">$</span>
+                    <span class="amount" data-monthly="29" data-yearly="279">29</span>
+                    <span class="period" data-monthly="/month" data-yearly="/year">/month</span>
+                </div>
+            </div>
+            <div class="card-features">
+                <ul>
+                    <li><i class="fas fa-check"></i>Unlimited credits</li>
+                    <li><i class="fas fa-check"></i>All AI tools</li>
+                    <li><i class="fas fa-check"></i>Priority support</li>
+                    <li><i class="fas fa-check"></i>API access</li>
+                    <li><i class="fas fa-check"></i>Custom models</li>
+                </ul>
+            </div>
+            <a href="{{ url_for('register') }}" class="pricing-cta">Start Free Trial</a>
+        </div>
+
+        <div class="pricing-card">
+            <div class="card-header">
+                <h3>Enterprise</h3>
+                <div class="price">
+                    <span class="amount">Custom</span>
+                    <span class="period">solution</span>
+                </div>
+            </div>
+            <div class="card-features">
+                <ul>
+                    <li><i class="fas fa-check"></i>Everything in Pro</li>
+                    <li><i class="fas fa-check"></i>Dedicated support</li>
+                    <li><i class="fas fa-check"></i>Custom integration</li>
+                    <li><i class="fas fa-check"></i>SLA guarantee</li>
+                    <li><i class="fas fa-check"></i>Training sessions</li>
+                </ul>
+            </div>
+            <a href="{{ url_for('contact') }}" class="pricing-cta">Contact Sales</a>
+        </div>
+    </div>
+
+    <div class="pricing-features">
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-infinity"></i>
+                <h4>Unlimited Possibilities</h4>
+                <p>Access all AI tools without restrictions</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-shield-alt"></i>
+                <h4>Enterprise Security</h4>
+                <p>Advanced security and privacy features</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-code"></i>
+                <h4>API Access</h4>
+                <p>Integrate AI directly into your applications</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const billingToggle = document.getElementById('billingToggle');
+    const monthlyLabel = document.getElementById('monthlyLabel');
+    const yearlyLabel = document.getElementById('yearlyLabel');
+
+    function updatePrices(isYearly) {
+        document.querySelectorAll('.price .amount').forEach(element => {
+            if (element.dataset.yearly && element.dataset.monthly) {
+                element.textContent = isYearly ? element.dataset.yearly : element.dataset.monthly;
+            }
+        });
+        document.querySelectorAll('.period').forEach(element => {
+            if (element.dataset.yearly && element.dataset.monthly) {
+                element.textContent = isYearly ? element.dataset.yearly : element.dataset.monthly;
+            }
+        });
+        monthlyLabel.classList.toggle('active', !isYearly);
+        yearlyLabel.classList.toggle('active', isYearly);
+    }
+
+    billingToggle.addEventListener('change', function() {
+        updatePrices(this.checked);
+    });
+});
+</script>
+{% endblock %}

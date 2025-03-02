@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="neural-bg" id="neuralNetwork"></div>
+<div class="register-container">
+    <div class="register-box">
+        <div class="auth-header">
+            <h2>Create Account</h2>
+            <p>Join our community today</p>
+        </div>
+        
+        <form class="register-form" action="{{ url_for('register') }}" method="POST">
+            <div class="form-group">
+                <div class="input-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <input type="text" placeholder="Full Name" required class="form-input" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <div class="input-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <input type="email" placeholder="Email" required class="form-input" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <div class="input-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <input type="password" placeholder="Password" required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <div class="input-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <input type="password" placeholder="Confirm Password" required class="form-input">
+            </div>
+
+            <button type="submit" class="auth-button">
+                <span>Create Account</span>
+            </button>
+        </form>
+
+        <div class="social-login">
+            <p>Or register with</p>
+            <div class="social-buttons">
+                <button class="social-btn google">
+                    <i class="fab fa-google"></i>
+                </button>
+                <button class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+                <button class="social-btn apple">
+                    <i class="fab fa-apple"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="signup-link">
+            Already have an account? <a href="{{ url_for('login') }}">Sign in</a>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const bg = document.getElementById('neuralNetwork');
+    const synapseCount = 40; // Increased number of synapses
+    const synapses = [];
+    const connections = [];
+    const pulses = [];
+    let mouseX = 0;
+    let mouseY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function createNeuralNetwork() {
+        for (let i = 0; i < synapseCount; i++) {
+            const synapse = document.createElement('div');
+            synapse.className = 'synapse';
+            
+            // Structured grid with more variance
+            const row = Math.floor(i / 8);
+            const col = i % 8;
+            const baseX = (col / 7) * window.innerWidth;
+            const baseY = (row / 4) * window.innerHeight;
+            const variance = 100; // Increased position variance
+            
+            const x = baseX + (Math.random() * variance - variance/2);
+            const y = baseY + (Math.random() * variance - variance/2);
+            
+            synapse.style.left = `${x}px`;
+            synapse.style.top = `${y}px`;
+            
+            bg.appendChild(synapse);
+            synapses.push({
+                element: synapse,
+                x: x,
+                y: y,
+                vx: (Math.random() - 0.5) * 3, // Increased velocity
+                vy: (Math.random() - 0.5) * 3,
+                baseX: x,
+                baseY: y
+            });
+
+            const pulse = document.createElement('div');
+            pulse.className = 'pulse register-pulse'; // Added new class
+            bg.appendChild(pulse);
+            pulses.push(pulse);
+        }
+
+        synapses.forEach((synapse, i) => {
+            synapses.forEach((target, j) => {
+                if (i !== j && Math.random() < 0.4) { // Increased connection probability
+                    const connection = document.createElement('div');
+                    connection.className = 'connection register-connection'; // Added new class
+                    bg.appendChild(connection);
+                    connections.push({
+                        element: connection,
+                        start: synapse,
+                        end: target
+                    });
+                }
+            });
+        });
+    }
+
+    function animateNetwork() {
+        synapses.forEach(synapse => {
+            const dx = mouseX - synapse.x;
+            const dy = mouseY - synapse.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < 300) { // Increased influence radius
+                synapse.vx += dx * 0.003; // Increased mouse influence
+                synapse.vy += dy * 0.003;
+            }
+
+            const homeX = synapse.baseX - synapse.x;
+            const homeY = synapse.baseY - synapse.y;
+            synapse.vx += homeX * 0.003;
+            synapse.vy += homeY * 0.003;
+
+            synapse.vx *= 0.95;
+            synapse.vy *= 0.95;
+            synapse.x += synapse.vx;
+            synapse.y += synapse.vy;
+
+            synapse.element.style.left = `${synapse.x}px`;
+            synapse.element.style.top = `${synapse.y}px`;
+        });
+
+        connections.forEach(connection => {
+            const x1 = connection.start.x;
+            const y1 = connection.start.y;
+            const x2 = connection.end.x;
+            const y2 = connection.end.y;
+            
+            const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+            const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+
+            if (length < 300) { // Increased connection visibility range
+                connection.element.style.display = 'block';
+                connection.element.style.width = `${length}px`;
+                connection.element.style.left = `${x1}px`;
+                connection.element.style.top = `${y1}px`;
+                connection.element.style.transform = `rotate(${angle}deg)`;
+                connection.element.style.opacity = (1 - length / 300) * 0.7; // Increased opacity
+            } else {
+                connection.element.style.display = 'none';
+            }
+        });
+
+        if (Math.random() < 0.08) { // Increased pulse frequency
+            const sourceIndex = Math.floor(Math.random() * synapses.length);
+            const targetIndex = Math.floor(Math.random() * synapses.length);
+            
+            if (sourceIndex !== targetIndex) {
+                const source = synapses[sourceIndex];
+                const target = synapses[targetIndex];
+                const pulse = pulses[Math.floor(Math.random() * pulses.length)];
+                
+                pulse.style.left = `${source.x}px`;
+                pulse.style.top = `${source.y}px`;
+                pulse.style.animation = 'none';
+                void pulse.offsetWidth;
+                pulse.style.animation = 'pulseSignal 1.5s ease-out';
+                
+                setTimeout(() => {
+                    target.element.style.transform = 'scale(2)'; // Increased scale effect
+                    setTimeout(() => {
+                        target.element.style.transform = 'scale(1)';
+                    }, 300);
+                }, 500);
+            }
+        }
+
+        requestAnimationFrame(animateNetwork);
+    }
+
+    createNeuralNetwork();
+    animateNetwork();
+});
+</script>
+{% endblock %}
