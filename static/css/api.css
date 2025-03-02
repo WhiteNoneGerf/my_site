@@ -1,0 +1,99 @@
+.api-content {
+    background: rgba(22, 28, 36, 0.4);
+    border: 1px solid rgba(82, 109, 249, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.api-endpoint {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(82, 109, 249, 0.1);
+}
+
+.endpoint-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.method {
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.method.get {
+    background: rgba(0, 255, 157, 0.1);
+    color: #00ff9d;
+}
+
+.method.post {
+    background: rgba(82, 109, 249, 0.1);
+    color: #526df9;
+}
+
+.endpoint-header code {
+    font-family: 'Fira Code', monospace;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.api-content section {
+    margin-bottom: 3rem;
+}
+
+.api-content h2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.api-content h2 i {
+    color: #00e6ff;
+}
+
+.info-box {
+    background: rgba(82, 109, 249, 0.1);
+    border: 1px solid rgba(82, 109, 249, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.info-box h4 {
+    color: #fff;
+    margin: 0 0 1rem 0;
+}
+
+.info-box ol {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.info-box li {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .api-content {
+        padding: 1rem;
+    }
+
+    .api-endpoint {
+        padding: 1rem;
+    }
+
+    .endpoint-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}

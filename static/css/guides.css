@@ -1,0 +1,61 @@
+.guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.guide-card {
+    background: rgba(22, 28, 36, 0.4);
+    border: 1px solid rgba(82, 109, 249, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.guide-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(82, 109, 249, 0.3);
+    box-shadow: 0 10px 30px rgba(82, 109, 249, 0.2);
+}
+
+.guide-card h2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.guide-card h2 i {
+    color: #00e6ff;
+}
+
+.guide-card p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.5rem;
+}
+
+.guide-content {
+    border-top: 1px solid rgba(82, 109, 249, 0.1);
+    padding-top: 1.5rem;
+}
+
+.code-block {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+}
+
+.code-block pre {
+    margin: 0;
+    color: #00e6ff;
+}
+
+@media (max-width: 768px) {
+    .guides-grid {
+        grid-template-columns: 1fr;
+    }
+}

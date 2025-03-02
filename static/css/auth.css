@@ -1,0 +1,267 @@
+.login-container,
+.register-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    perspective: 1000px;
+    padding: 20px;
+}
+
+/* Box styles */
+.login-box,
+.register-box {
+    background: rgba(22, 28, 36, 0.4);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 0 50px rgba(0, 230, 255, 0.1),
+                inset 0 0 20px rgba(0, 230, 255, 0.05);
+    border: 1px solid rgba(0, 230, 255, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+/* Header styles */
+.auth-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: pulse 3s infinite;
+}
+
+.auth-header h2 {
+    font-size: 2.5em;
+    background: linear-gradient(45deg, #00e6ff, #00ff9d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.auth-header p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Form styles */
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+    border-radius: 16px;
+    background: rgba(82, 109, 249, 0.05);
+    padding: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 16px 45px;
+    border: 2px solid rgba(0, 230, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(22, 28, 36, 0.6);
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: rgba(0, 230, 255, 0.5);
+    background: rgba(15, 14, 71, 0.4);
+    box-shadow: 0 0 25px rgba(0, 230, 255, 0.2);
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgba(0, 230, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.form-group:hover .input-icon {
+    color: rgba(0, 230, 255, 1);
+    filter: drop-shadow(0 0 8px rgba(0, 230, 255, 0.5));
+}
+
+/* Button styles */
+.auth-button {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #00e6ff, #00ff9d);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 2px;
+    box-shadow: 0 5px 15px rgba(0, 230, 255, 0.3);
+}
+
+.auth-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 230, 255, 0.4);
+}
+
+/* Social buttons */
+.social-login {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.social-login p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 15px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.social-btn {
+    width: 55px;
+    height: 55px;
+    border: 2px solid rgba(0, 230, 255, 0.2);
+    border-radius: 15px;
+    background: rgba(15, 14, 71, 0.3);
+    color: rgba(0, 230, 255, 0.9);
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.social-btn:hover {
+    background: rgba(0, 230, 255, 0.1);
+    border-color: rgba(0, 230, 255, 0.5);
+    color: rgba(0, 230, 255, 1);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 230, 255, 0.3);
+}
+
+/* Neural Network Background */
+.neural-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at center, #1a1f25, #0d1117);
+    overflow: hidden;
+}
+
+/* Neural network elements */
+.synapse {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 230, 255, 0.6);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 230, 255, 0.4);
+    transition: all 0.5s ease;
+}
+
+.connection {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(0, 230, 255, 0.05),
+        rgba(0, 230, 255, 0.2),
+        rgba(0, 230, 255, 0.05));
+    transform-origin: left;
+    box-shadow: 0 0 15px rgba(0, 230, 255, 0.1);
+}
+
+.pulse {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 230, 255, 0.8);
+    border-radius: 50%;
+    transform: scale(0);
+    box-shadow: 0 0 30px rgba(0, 230, 255, 0.6);
+}
+
+/* Registration-specific neural network elements */
+.register-container .synapse {
+    width: 10px; /* Larger synapses */
+    height: 10px;
+    background: rgba(255, 123, 0, 0.7); /* Orange color */
+    box-shadow: 0 0 25px rgba(255, 123, 0, 0.5);
+}
+
+.register-container .connection {
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(255, 123, 0, 0.05),
+        rgba(255, 123, 0, 0.3),
+        rgba(255, 123, 0, 0.05));
+    box-shadow: 0 0 20px rgba(255, 123, 0, 0.2);
+}
+
+.register-container .pulse {
+    width: 15px; /* Larger pulses */
+    height: 15px;
+    background: rgba(255, 123, 0, 0.9);
+    box-shadow: 0 0 35px rgba(255, 123, 0, 0.7);
+}
+
+.register-container .neural-bg {
+    background: radial-gradient(circle at center, #1c1410, #0d0907);
+}
+
+/* Enhanced pulse animation for registration */
+@keyframes registerPulseSignal {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(2.5);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.register-container .pulse {
+    animation: registerPulseSignal 1.5s ease-out;
+}
+
+/* Modified hover effects for registration */
+.register-container .synapse:hover {
+    transform: scale(2);
+    background: rgba(255, 123, 0, 0.9);
+    box-shadow: 0 0 35px rgba(255, 123, 0, 0.8);
+}
+
+/* Animations */
+@keyframes pulseSignal {
+    0% { transform: scale(0); opacity: 1; }
+    50% { transform: scale(2); opacity: 0.5; }
+    100% { transform: scale(3); opacity: 0; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}

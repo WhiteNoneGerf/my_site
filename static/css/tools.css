@@ -1,0 +1,390 @@
+.tools-hero {
+    min-height: 100vh;
+    padding-top: 100px; /* Змінюємо padding-top щоб уникнути накладання з навігацією */
+    padding-bottom: 40px;
+    position: relative;
+    background: linear-gradient(135deg, rgba(13,17,23,0.95) 0%, rgba(26,26,58,0.95) 100%);
+}
+
+.tools-container {
+    max-width: 1200px;  /* Зменшуємо максимальну ширину */
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 60px; /* Додатковий відступ зверху */
+    overflow: hidden;  /* Додаємо overflow для обмеження вмісту */
+}
+
+/* Filters section */
+.tools-filters {
+    background: rgba(22, 28, 36, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(82, 109, 249, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 1px solid rgba(82, 109, 249, 0.2);
+    border-radius: 20px;
+    background: rgba(22, 28, 36, 0.4);
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: rgba(82, 109, 249, 0.2);
+    border-color: rgba(82, 109, 249, 0.4);
+    color: white;
+}
+
+.search-box {
+    position: relative;
+    min-width: 250px;
+    max-width: 300px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 40px;
+    border: 1px solid rgba(82, 109, 249, 0.2);
+    border-radius: 20px;
+    background: rgba(22, 28, 36, 0.4);
+    color: white;
+    font-size: 1rem;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: rgba(82, 109, 249, 0.4);
+    box-shadow: 0 0 15px rgba(82, 109, 249, 0.2);
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(82, 109, 249, 0.8);
+}
+
+/* Tools grid */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  /* Зменшуємо мінімальну ширину */
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    position: relative; /* Додаємо position relative */
+    z-index: 1; /* Забезпечуємо правильне накладання */
+    align-items: stretch;
+}
+
+.tool-card {
+    background: rgba(22, 28, 36, 0.4);
+    border: 1px solid rgba(82, 109, 249, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    height: auto; /* Змінюємо на auto */
+    min-height: 300px; /* Додаємо мінімальну висоту */
+    margin-bottom: 20px; /* Додаємо відступ знизу */
+    transition: all 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(82, 109, 249, 0.3);
+    box-shadow: 0 10px 30px rgba(82, 109, 249, 0.2);
+}
+
+.tool-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; /* Відступ перед кнопками */
+}
+
+.tool-card h3 {
+    color: #fff;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.tool-card p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 1.5rem 0;
+    flex-grow: 1;
+    flex: 1;
+    margin-bottom: 1rem;
+}
+
+.tool-card-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.run-locally-btn,
+.cloud-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    min-height: 2.5rem;
+}
+
+.run-locally-btn {
+    background: linear-gradient(45deg, #00e6ff, #00ff9d);
+    color: #0a0a1a;
+    border: none;
+}
+
+.cloud-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.run-locally-btn:hover,
+.cloud-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 230, 255, 0.2);
+}
+
+.tool-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.tool-header i {
+    font-size: 24px;
+    background: linear-gradient(45deg, #526df9, #00e6ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.performance-badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.performance-badge[data-level="low"] {
+    background: rgba(0, 255, 157, 0.1);
+    color: #00ff9d;
+}
+
+.performance-badge[data-level="medium"] {
+    background: rgba(255, 170, 0, 0.1);
+    color: #ffaa00;
+}
+
+.performance-badge[data-level="high"] {
+    background: rgba(255, 69, 58, 0.1);
+    color: #ff453a;
+}
+
+.tool-specs {
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.tool-specs span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+.run-locally-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #526df9, #00e6ff);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.run-locally-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(82, 109, 249, 0.3);
+}
+
+/* Model Runner */
+.model-runner {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    background: rgba(22, 28, 36, 0.95);
+    border: 1px solid rgba(82, 109, 249, 0.2);
+    border-radius: 20px 20px 0 0;
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+}
+
+.runner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(82, 109, 249, 0.1);
+}
+
+.close-runner {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.close-runner:hover {
+    color: white;
+}
+
+.runner-content {
+    padding: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.model-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(82, 109, 249, 0.1);
+    border-top-color: #526df9;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.performance-monitor {
+    display: flex;
+    gap: 20px;
+}
+
+.monitor-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.monitor-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+.monitor-value {
+    color: #526df9;
+    font-weight: 600;
+}
+
+/* Animations */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tools-hero {
+        padding-top: 80px; /* Менший відступ для мобільних */
+    }
+
+    .tools-container {
+        padding-top: 40px;
+    }
+
+    .tools-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        max-width: none;
+    }
+
+    .model-runner {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-card {
+        margin-bottom: 15px;
+    }
+}
